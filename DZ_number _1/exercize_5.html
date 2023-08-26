@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+      <div id="cart-items">
+          <div class="item">Milk 1 l.<span class="qty">x 2</span></div>
+          <div class="item">Cola 1.5 l. <span class="qty">x 1</span></div>
+          <div class="item">Bread<span class="qty">x 2</span></div>
+          <div class="item">Cheese<span class="qty">x 1</span></div>
+          <div class="item">Chocolate bar<span class="qty">x 3</span></div>
+      </div>
+
+      <script>
+        let products = document.getElementsByClassName('item');
+        products[1].remove();
+        let bar = document.createElement('div')
+        let span = document.createElement('span');
+        let p = document.createElement('span');
+        p.innerText = 'Canned Fish';
+        bar.append(p, span);
+        span.setAttribute('class', 'qty');
+        span.innerHTML = ' x4'
+        bar.setAttribute('class', 'item');
+        let foo = products[3];
+        let parendDiv = foo.parentNode;
+        parendDiv.replaceChild(bar, foo);
+      </script>
+  </body>
+</html>

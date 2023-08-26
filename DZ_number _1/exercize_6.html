@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <ul></ul>
+        <script>
+            const list = document.createElement('ul');
+            document.body.appendChild(list);
+            let stop = true;
+            while (stop === true) {
+                const userAnswer = prompt('Введите строку');
+                if (userAnswer === null || userAnswer === ''){
+                    stop = false;
+                } else {
+                    let add = document.createElement("li");
+                    add.innerText = userAnswer;
+                    list.appendChild(add);
+                }
+            }
+        </script>
+    </body>
+</html>

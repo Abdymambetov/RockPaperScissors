@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Fight: User VS Computer</title>
+    </head>
+    <body>
+        <script>
+            function check (text, min, max) {
+                if (text === '' || text < min || text > max || text % 1 !==0 || !+text) {
+                    return alert('Ошибка!\n' + 'Введите целое число от ' + min + ' до ' + max);
+                } else {
+                    return true;
+                }
+            }
+            function startFight (max) {
+                let stopFight = true;
+                const fightAnswers = ['Камень', 'Ножницы', 'Бумага', 'Ящерица', 'Спок'];
+                function text (num) {
+                    let text = '';
+                    for (let i = 1; i <= num; i++) {
+                        text += '\n' + i + '.' + fightAnswers[i - 1];
+                    }
+                    return text
+                }
+                let userWin = 0;
+                let computerWin = 0;
+                let draw = 0;
+                while (stopFight) {
+                    function result (comp, user) {
+                        const computerResult = 'Компьютер: ' + fightAnswers[comp - 1] +'\n';
+                        const userResult = 'Ты ' + fightAnswers[user - 1] + '\n';
+                        return userResult + computerResult;
+                    }
+                    const computerNum = Math.floor(Math.random() * max + 1);
+                    const userNum = prompt('Давай сыграем в игру!\n' + 'Выбери число от 1 до ' + max + text(max));
+                    if (userNum === null) {
+                        stopFight = false;
+                    } else if (check(userNum, 1, max) === true) {
+                        if (+userNum === computerNum) {
+                            draw++;
+                            alert(result(computerNum, userNum) + 'Ничья');
+                        } else if (+userNum === max && computerNum === 1 || userNum < computerNum) {
+                            userWin++;
+                            alert(result(computerNum,userNum) + 'Вы победили!');
+                        } else if (computerNum === max && +userNum === 1 || computerNum < userNum) {
+                            computerWin++;
+                             alert(result(computerNum, userNum) + 'Компьтер победил вас!');
+                        }
+                    }
+                }
+                alert('Побед: ' + userWin + '\nПоражений от компьтера: ' + computerWin + '\nНичья: ' + draw);
+            }
+            const gameStart = prompt('Игра:\nКамень-ножницы-Бумага.\nСо сколькими вариантами хода вы хотите играть?\nВведите число от 3 до 5');
+            if (check(gameStart, 3, 5,) === true && gameStart !== null) {
+                startFight(gameStart);
+            }
+        </script>
+    </body>
+</html>

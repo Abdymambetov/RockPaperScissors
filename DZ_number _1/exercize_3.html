@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ol id="todo-list"></ol>
+    <script>
+      const tasks = ['Buy lemonade', 'Make toasts', 'Repair car', 'Play games', 'Pet a cat'];
+      const list = document.getElementById('todo-list');
+      for (let i = 0; i < tasks.length; i++) {
+          const el = document.createElement('li')
+          el.className = 'task'
+          el.innerText = tasks[i]
+          list.appendChild(el)
+      }
+    </script>
+</body>
+</html>
